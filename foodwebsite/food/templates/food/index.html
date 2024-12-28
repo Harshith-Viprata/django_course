@@ -17,9 +17,10 @@
     <!-- Link to your JavaScript file -->
   </body>
 </html>
-{% endcomment %} {% for item in item_list %} {{ item.id }} -- {{ item.item_name
-}}
+{% endcomment %} {% for item in item_list %}
 
-<ul></ul>
+<ul>
+  <li>{{ item.id }} -- {{ item.item_name }}</li>
+</ul>
 
 {%endfor %}

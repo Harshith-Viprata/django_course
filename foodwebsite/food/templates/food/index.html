@@ -1,4 +1,5 @@
-{% comment %} <!DOCTYPE html>
+{% extends "food/base.html" %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,18 +10,32 @@
     />
     <meta name="author" content="Your Name" />
     <title>Basic HTML Template</title>
-    <link rel="stylesheet" href="styles.css" />
-    <!-- Link to your CSS file -->
   </head>
   <body>
-    <script src="script.js"></script>
-    <!-- Link to your JavaScript file -->
+    {% block body %} {% for item in item_list %}
+    <div class="row">
+      <div class="col-md-3 offset-md-2">
+        <img
+          src="{{item.item_image}}"
+          class="card"
+          style="height: 150px"
+          alt=""
+        />
+      </div>
+      <div class="col-md-4">
+        <h3>{{ item.item_name }}</h3>
+        <h5>{{ item.item_desc }}</h5>
+        <h6>{{ item.item_price }}</h6>
+      </div>
+      <div class="col-md-2">
+        <a href="{% url 'detail_view' item.id %}" class="btn btn-success"
+          >Details</a
+        >
+        <a href="{% url 'update_item' item.id %}" class="btn btn-info"
+          >Update</a
+        >
+      </div>
+    </div>
+    {%endfor %} {% endblock %}
   </body>
 </html>
-{% endcomment %} {% for item in item_list %}
-
-<ul>
-  <li>{{ item.id }} -- {{ item.item_name }}</li>
-</ul>
-
-{%endfor %}
